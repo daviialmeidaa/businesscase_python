@@ -18,6 +18,7 @@ def form(request):
 
 def create(request):
     form = VagasForm(request.POST or None)
+    print('AQUII', request.POST.get('data'))
     if form.is_valid():
         form.save()
         return redirect('home')   
