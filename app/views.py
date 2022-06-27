@@ -62,6 +62,8 @@ def delete(request, pk):
 def add(request, pk):
     data = {}
     data ['form'] = CandidatosForm
+    print ('data', data)
+
     return render(request, 'candidatoForm.html', data)
 
 # ===================================================================
@@ -72,7 +74,6 @@ def createCandidate(request):
     if form.is_valid():
         form.save()
         return redirect('home')
-
 # ===================================================================
 # Visualização de tabela de candidatos cadastrados dentro da vaga
 
@@ -84,11 +85,11 @@ def view(request, pk):
 # ===================================================================
 # Editando dados de candidatos
 
-# def editCandidate(request, pk):
-#     data = {}
-#     data['db'] = Candidatos.objects.get(pk=pk)
-#     data['form'] = CandidatosForm(instance=data['db'])
-#     return render(request, 'candidatoForm.html')
+def editCandidate(request, pk):
+    data = {}
+    data['db'] = Candidatos.objects.get(pk=pk)
+    data['form'] = CandidatosForm(instance=data['db'])
+    return render(request, 'candidatoForm.html')
 
 # ===================================================================
 # Atualizando dados lançados para cada candidato clicando em salvar no formulario

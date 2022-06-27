@@ -6,9 +6,9 @@ from app.models import Candidatos
 class VagasForm(ModelForm):
     class Meta:
         model = Vagas
-        fields = ['vaga', 'description', 'data']
+        fields = ['vaga', 'area', 'description', 'data']
 
 class CandidatosForm(ModelForm):
     class Meta:
         model = Candidatos
-        fields = ['nome', 'vaga', 'pretensao', 'area', 'previsao', 'indicacao', 'indicador']
+        fields = ['nome', 'vaga', 'pretensao', 'previsao', 'indicacao', 'indicador']

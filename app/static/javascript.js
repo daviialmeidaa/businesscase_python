@@ -50,4 +50,9 @@
 
     return dataFormatada;
   }
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  
 })(window, document);

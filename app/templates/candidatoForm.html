@@ -23,14 +23,14 @@
   <div class="col-8 m-auto pt-4 pb-2 text-center">
     <div id="result"></div>
 
-    <form name="form" id="form" action="/createCandidate/" method="post">
+    <form name="form" id="form" action="{% if db %}/editCandidate/{{ db.id }}{% else %}/createCandidate/{% endif %}" method="post">
 
       {% csrf_token %}
       <!-- {{form.as_p}} -->
       <div class="form-group mt-4"><strong>Nome do Candidato:</strong> {{form.nome}}</div>
-      <div class="form-group mt-4"><strong>Vaga:</strong> {{form.vaga}}</div>
+      <!-- <div class="form-group mt-4"><strong>Vaga:</strong> {{form.vaga}}</div> -->
       <div class="form-group mt-4"><strong>Pretensão:</strong> {{form.pretensao}}</div>
-      <div class="form-group mt-4"><strong>Area:</strong> {{form.area}}</div>
+      <!-- <div class="form-group mt-4"><strong>Area:</strong> {{form.area}}</div> -->
       <div class="form-group mt-4"><strong>Previsão:</strong> {{form.previsao}}</div>
       <div class="form-group mt-4"><strong>Indicação:</strong> {{form.indicacao}}</div>
       <div class="form-group mt-4"><strong>Quem Indicou:</strong> {{form.indicador}}</div>
