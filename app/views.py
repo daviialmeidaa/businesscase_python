@@ -68,36 +68,34 @@ def add(request, pk):
 # Botão save dentro do formulario anterior. Adicionando candidato ao banco
 
 def createCandidate(request):
-    data = {}
-    data['db'] = Vagas.objects.get(pk=pk)
-    form = CandidatosForm(request.POST or None, instance=data['db'])
+    form = CandidatosForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')   
+        return redirect('home')
 
 # ===================================================================
 # Visualização de tabela de candidatos cadastrados dentro da vaga
 
 def view(request, pk):
     data = {}
-    data['db'] = Candidatos.objects.all()
+    data['db'] = Candidatos.objects.filter(vaga_id=pk)
     return render(request, 'listaCandidatos.html', data)
 
 # ===================================================================
 # Editando dados de candidatos
 
-def editCandidate(request, pk):
-    data = {}
-    data['db'] = Candidatos.objects.get(pk=pk)
-    data['form'] = CandidatosForm(instance=data['db'])
-    return render(request, 'candidatoForm.html')
+# def editCandidate(request, pk):
+#     data = {}
+#     data['db'] = Candidatos.objects.get(pk=pk)
+#     data['form'] = CandidatosForm(instance=data['db'])
+#     return render(request, 'candidatoForm.html')
 
 # ===================================================================
 # Atualizando dados lançados para cada candidato clicando em salvar no formulario
-def updateCandidate(request, pk):
-    data = {}
-    data['db'] = Candidatos.objects.get(pk=pk)
-    form = CandidatosForm(request.POST or None, instance=data['db'])
-    if form.is_valid():
-        form.save()
-        return redirect('view')     
+# def updateCandidate(request, pk):
+#     data = {}
+#     data['db'] = Candidatos.objects.get(pk=pk)
+#     form = CandidatosForm(request.POST or None, instance=data['db'])
+#     if form.is_valid():
+#         form.save()
+#         return redirect('view')     

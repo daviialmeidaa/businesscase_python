@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario - People App</title>
+  <title>Formulario Vagas - People App</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -28,7 +28,7 @@
       <!-- {{form.as_p}} -->
       <div class="form-group mt-4"><strong>Nome da Vaga:</strong> {{form.vaga}}</div>
       <div class="form-group mt-4"><strong>Job Description:</strong> {{form.description}}</div>
-      <div class="form-group mt-4"><strong>Data Expiração:</strong> {{form.data}}</div>
+      <div class="form-group mt-4 data-exp"><strong>Data Expiração:</strong> <input class="date-field" type="date" {{form.data}}</div>
       <input type="submit" class="btn btn-success mt-4" value="Salvar">
     </form>
   </div>
@@ -39,6 +39,15 @@
     #id_description {
       height: 200px;
       line-break: auto;
+    }
+
+    .data-exp{
+      margin-left: 4px
+    }
+
+    .date-field{
+      margin-left: 8px;
+      width: 195px;
     }
   </style>
 </body>

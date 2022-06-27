@@ -45,11 +45,9 @@
 
   if (doc.getElementById("#dateField")) {
     let dataInput = doc.getElementById("#dateField");
-    function date() {
-      let data = new Date(dataInput);
-      let dataFormatada = data.toLocaleDateString("pt_BR", { timeZone: "UTC" });
-      
-      return dataFormatada;
-    }
+    let data = new Date(dataInput);
+    let dataFormatada = data.toLocaleDateString("pt_BR", { timeZone: "UTC" });
+
+    return dataFormatada;
   }
 })(window, document);
