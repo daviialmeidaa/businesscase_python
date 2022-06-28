@@ -38,6 +38,7 @@ class Vagas(models.Model):
 class Candidatos(models.Model):
     nome = models.CharField(max_length=150)
     vaga = models.ForeignKey(Vagas, null=False, related_name='candidato_vagas', on_delete=deletion.CASCADE)
+    email = models.EmailField(null=True, blank=True, max_length=150)
     pretensao = models.DecimalField (max_digits = 9, decimal_places = 2, null=True, blank=True)
     previsao = models.DateField(null=True)
     indicacao = models.ForeignKey(IndicacaoModel, null=True, blank=True, related_name='indicacao', on_delete=deletion.DO_NOTHING)

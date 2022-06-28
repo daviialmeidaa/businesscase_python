@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vagas - People App</title>
+  <title>CRUD People App</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -13,11 +13,11 @@
 
 <body>
   <div class="col- m-auto pt-2 pb-2 text-center">
-    <h1>Vagas People App</h1>
+    <h1>CRUD People App</h1>
   </div>
 
   <div class="col- m-auto pt-3 pb-2 text-center">
-    <a href="/form" class="btn btn-success">Adicionar Vaga</a>
+    <a href="/form" class="btn btn-success">Cadastrar Vaga</a>
     <a href="/Cadastro_Parceiros" class="btn btn-success">Cadastrar Parceiro IEBT</a>
   </div>
 
@@ -46,7 +46,7 @@
           <td>{{dbs.vaga}}</td>
           <td>{{dbs.area}}</td>
           <td class="description">{{dbs.description}}</td>
-          <td id="dateField">{{dbs.data}}</td>
+          <td id="dateField">{{dbs.data | date:"d/m/yy"}}</td>
           <td>
             <div class="btn-layouts">
               <a  href="/add/{{dbs.id}}" class="btn btn-success" data-toggle="tooltip" data-placement="bottom"

@@ -14,7 +14,7 @@ class VagasForm(ModelForm):
 class CandidatosForm(ModelForm):
     class Meta:
         model = Candidatos
-        fields = ['nome', 'vaga','pretensao', 'previsao', 'indicacao', 'indicador']
+        fields = ['nome', 'vaga', 'email', 'pretensao', 'previsao', 'indicacao', 'indicador']
 
 class AreasForm(ModelForm):
     class Meta:

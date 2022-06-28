@@ -35,6 +35,7 @@
           <th scope="col">#</th>
           <th scope="col">Nome do candidato</th>
           <!-- <th scope="col">Vaga</th> -->
+          <th scope="col">Email</th>
           <th scope="col">Pretensão</th>
           <th scope="col">Previsão</th>
           <th scope="col">Indicação</th>
@@ -52,17 +53,23 @@
           <td>{{dbs.nome}}</td>
 
           <!-- <td>{{dbs.vaga}}</td> -->
+          {% if dbs.email == NULL %}
+          <td class="prevent-none">-</td>
+          {% else %}
+          <td class="prevent-none">{{dbs.email}}</td>
+          {%endif%}
+
 
           {% if dbs.pretensao == NULL %}
           <td class="prevent-none">-</td>
           {% else %}
-          <td class="prevent-none">{{dbs.pretensao}}</td>
+          <td class="prevent-none"> R$ {{dbs.pretensao}}</td>
           {%endif%}
 
           {% if dbs.previsao == NULL %}
           <td class="prevent-none">-</td>
           {% else %}
-          <td class="prevent-none">{{dbs.previsao}}</td>
+          <td class="prevent-none">{{dbs.previsao | date:"d/m/yy"}}</td>
           {%endif%}
 
           <td class="prevent-none">{{dbs.indicacao}}</td>
