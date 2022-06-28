@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from app.forms import VagasForm
 from app.forms import CandidatosForm
+from app.forms import ParceiroForm
 from app.models import Vagas
 from app.models import Candidatos
 
@@ -73,7 +74,7 @@ def createCandidate(request):
     form = CandidatosForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('home')
+        return render(request, 'listaCandidatos.html')
 # ===================================================================
 # Visualização de tabela de candidatos cadastrados dentro da vaga
 
@@ -99,4 +100,22 @@ def editCandidate(request, pk):
 #     form = CandidatosForm(request.POST or None, instance=data['db'])
 #     if form.is_valid():
 #         form.save()
-#         return redirect('view')     
+#         return redirect('view')
+
+# ===================================================================
+# Render para Form de cadastro de Parceiros
+
+def Cadastro_Parceiros(request):
+    data = {}
+    data['form'] = ParceiroForm
+    return render(request, 'parceiroForm.html', data)
+
+    
+# ===================================================================
+# Botão save dentro do formulario anterior. Adicionando parceiros ao banco
+
+def createParceiro(request):
+    form = ParceiroForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return render(request, 'index.html')

@@ -18,6 +18,14 @@
       });
     }
   }
+  
+  let previne = doc.querySelectorAll("prevent-none");
+
+  if(previne == none) {
+    previne = "";
+  }
+
+
 
   // Ajax do Form
   if (doc.querySelector("#form")) {
@@ -32,7 +40,7 @@
       ajax.onreadystatechange = function () {
         if (ajax.status === 200 && ajax.readyState === 4) {
           let result = doc.querySelector("#result");
-          result.innerHTML = "Vaga cadastrada com sucesso!";
+          result.innerHTML = "Cadastrado com sucesso!";
           result.classList.add("alert");
           result.classList.add("alert-success");
         }
@@ -54,5 +62,5 @@
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
-  
+
 })(window, document);
