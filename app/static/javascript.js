@@ -63,4 +63,5 @@
     $('[data-toggle="tooltip"]').tooltip()
   })
 
+
 })(window, document);

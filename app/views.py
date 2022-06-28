@@ -74,7 +74,7 @@ def createCandidate(request):
     form = CandidatosForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return render(request, 'listaCandidatos.html')
+        return redirect('home')
 # ===================================================================
 # Visualização de tabela de candidatos cadastrados dentro da vaga
 
