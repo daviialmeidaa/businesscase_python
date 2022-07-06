@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from app.forms import VagasForm
 from app.forms import CandidatosForm
 from app.forms import ParceiroForm
+from app.forms import ColaboradoresForm
 from app.models import Vagas
 from app.models import Candidatos
+from app.models import Colaboradores
 
 # Pagina inicial
 
@@ -118,4 +120,30 @@ def createParceiro(request):
     form = ParceiroForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return render(request, 'index.html')
+        return redirect('home') 
+
+# ===================================================================
+# Render para Form de cadastro de Colaboradores
+
+def Cadastro_Colaboradores(request):
+    data = {}
+    data['form'] = ColaboradoresForm
+    return render(request, 'ColaboradoresForm.html', data)  
+
+# ===================================================================
+# Render para Lista de cadastro de Colaboradores   
+
+def View_Colaboradores(request):
+    data = {}
+    data['db'] = Colaboradores.objects.all()
+    return render(request, 'listaColaboradores.html', data) 
+
+# ===================================================================
+# Botão save dentro do formulario anterior. Adicionando colaboradores ao banco
+
+def createColaborador(request):
+    form = ColaboradoresForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('View_Colaboradores')      
+          

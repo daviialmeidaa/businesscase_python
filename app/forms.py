@@ -4,6 +4,7 @@ from app.models import Candidatos
 from app.models import Areas
 from app.models import IndicacaoModel
 from app.models import Parceiros
+from app.models import Colaboradores
 
 # Create the form class.
 class VagasForm(ModelForm):
@@ -30,3 +31,8 @@ class ParceiroForm(ModelForm):
     class Meta:
         model = Parceiros
         fields = ['parceiro']
+
+class ColaboradoresForm(ModelForm):
+    class Meta:
+        model = Colaboradores
+        fields = ['nome', 'cargo', 'area', 'data_inicio']

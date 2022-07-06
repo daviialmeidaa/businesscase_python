@@ -48,4 +48,19 @@ class Candidatos(models.Model):
         return self.nome
         return self.vaga
 
- 
+
+class Colaboradores(models.Model):
+    nome = models.CharField(max_length=150)
+    cargo = models.CharField(max_length=150)
+    area = models.ForeignKey(Areas, null=True, blank=True, related_name='indicacao', on_delete=deletion.DO_NOTHING)
+    modalidade_contratacao = models.CharField(max_length=150, null=True, blank=True)
+    data_inicio = models.DateField(null=False)
+
+    def __str__(self):
+        return self.area
+
+class regras_ferias(models.Model):
+    modalidade_contratacao = models.ForeignKey(Colaboradores, null=True, blank=True, related_name='indicacao', on_delete=deletion.CASCADE)
+    minimo_dias = models.DurationField(null=True, blank=True)
+    tempo_max = models.DurationField(null=True, blank=True)
+    periodo = models.DurationField(null=True, blank=True)
