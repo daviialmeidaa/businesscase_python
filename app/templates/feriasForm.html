@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Férias - People App</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="col- m-auto pt-2 pb-2 text-center">
+    <h1>Férias</h1>
+  </div>
+
+  <div class="col- m-auto pt-3 pb-2 text-center">
+    <a href="/View_Colaboradores" class="btn btn-info">Voltar</a>
+  </div>
+
+  <div class="col-xxl-1 m-auto pt-4 pb-2 text-center">
+    <div id="result"></div>
+
+    <form name="form" id="form" action="{% if db %}/update/{{ db.id }}{% else %}/createFerias/{% endif %}" method="post">
+      {% csrf_token %}
+      <!-- {{form.as_p}} -->
+      <div class="form-group mt-4"><strong>Tipo de Férias: </strong> {{form.tipo_ferias}}</div>
+      <div class="form-group mt-4"><strong>Início Ferias: </strong> {{form.data_saida}}</div>
+      <div class="form-group mt-4"><strong>Final Férias: </strong> {{form.data_retorno}}</div>
+      
+      <input type="submit" class="btn btn-success mt-4" value="Salvar">
+    </form>
+  </div>
+
+  {% load static %}
+  <script src="{%static 'javascript.js'%}"></script>
+  <style>
+    #id_description {
+      height: 200px;
+      line-break: auto;
+    }
+
+    .data-exp{
+      margin-left: 4px
+    }
+
+    .date-field{
+      margin-left: 8px;
+      width: 195px;
+    }
+  </style>
+</body>
+
+</html>

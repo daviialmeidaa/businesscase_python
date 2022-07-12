@@ -29,7 +29,10 @@
       <div class="form-group mt-4"><strong>Nome da Vaga:</strong> {{form.vaga}}</div>
       <div class="form-group mt-4"><strong>Area:</strong> {{form.area}}</div>
       <div class="form-group mt-4"><strong>Job Description:</strong> {{form.description}}</div>
-      <div class="form-group mt-4 data-exp"><strong>Data Expiração:</strong> <input class="date-field" type="date" {{form.data}}</div>
+      <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+      <div class="form-group mt-4 data-exp"><strong>Data Expiração:</strong> <input class="span2" size="16" type="text" value="" {{form.data}}</div>
+      </div>
+
       <input type="submit" class="btn btn-success mt-4" value="Salvar">
     </form>
   </div>

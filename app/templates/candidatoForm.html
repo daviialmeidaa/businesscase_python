@@ -12,10 +12,13 @@
 </head>
 
 <body>
+  <tbody>
+
   <div class="col- m-auto pt-2 pb-2 text-center">
-    <h1>Cadastro de Candidato</h1>
+    <h1>Cadastro de Candidato {{dbs.vaga_id}}</h1>
   </div>
 
+</tbody>
   <div class="col- m-auto pt-3 pb-2 text-center">
     <a href="/" class="btn btn-info">Voltar</a>
   </div>
@@ -23,7 +26,7 @@
   <div class="col-xxl-1 m-auto pt-4 pb-2 text-center">
     <div id="result" class="resultado"></div>
 
-    <form name="form" id="form" action="{% if db %}/editCandidate/{{ db.id }}{% else %}/createCandidate/{% endif %}" method="post">
+    <form name="form" id="form" action="/createCandidate/" method="post">
 
       {% csrf_token %}
       <!-- {{form.as_p}} -->      
@@ -32,6 +35,7 @@
       <div class="form-group mt-4"><strong>Email:</strong> {{form.email}}</div>
       <div class="form-group mt-4"><strong>Pretensão:</strong> {{form.pretensao}}</div>
       <!-- <div class="form-group mt-4"><strong>Area:</strong> {{form.area}}</div> -->
+      <!-- <div class="form-group mt-4 data-exp"><strong>Previsão de Entrada:</strong> <input class="span2" size="16" type="text" value="" {{form.previsao}}</div> -->
       <div class="form-group mt-4"><strong>Previsão:</strong> {{form.previsao}}</div>
       <div class="form-group mt-4"><strong>Indicação:</strong> {{form.indicacao}}</div>
       <div class="form-group mt-4"><strong>Quem Indicou:</strong> {{form.indicador}}</div>

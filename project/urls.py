@@ -1,5 +1,4 @@
 """project URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -15,12 +14,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from app.views import home, form, create, edit, update, delete, add, view, createCandidate, editCandidate, Cadastro_Parceiros, createParceiro, Cadastro_Colaboradores, View_Colaboradores, createColaborador
+from app.views import home, form, create, edit, update, delete, add, view, createCandidate, editCandidate, Cadastro_Parceiros, createParceiro, Cadastro_Colaboradores, View_Colaboradores, createColaborador, Cadastro_Regras, createRegras, Cadastro_Ferias, createFerias
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('form/', form, name='form'),
     path('create/', create, name='create'),    
     path('edit/<int:pk>/', edit, name='edit'),
@@ -35,5 +33,9 @@ urlpatterns = [
     path('Cadastro_Colaboradores/', Cadastro_Colaboradores, name='Cadastro_Colaboradores'),
     path('View_Colaboradores/', View_Colaboradores, name='View_Colaboradores'),
     path('createColaborador/', createColaborador, name='createColaborador'),
-        
-]
+    path('Cadastro_Regras/', Cadastro_Regras, name='Cadastro_Regras'),
+    path('createRegras/', createRegras, name='createRegras'),
+    path('Cadastro_Ferias/', Cadastro_Ferias, name='Cadastro_Ferias'),
+    path('createFerias/', createFerias, name='createFerias'),
+    ]
+

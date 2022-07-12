@@ -26,10 +26,11 @@
     <!-- <a href="add/{{dbs.vaga_id}}" class="btn btn-success w-20">Adicionar Candidato</a> -->
 
     <a href="/Cadastro_Colaboradores" class="btn btn-success">Incluir Colaborador</a>
+    <a href="/Cadastro_Regras" class="btn btn-success">Definir Regras Por Modalidade</a>
     <a href="/" class="btn btn-info w-600">Voltar</a>
   </div>
 
-  <div class="col-12 m-auto pt-4 pb-2 text-center">
+  <div class="col-0 m-auto pt-4 pb-2 text-center">
     <table class="table">
       <thead class="thead-dark">
         <tr>
@@ -38,7 +39,10 @@
           <th scope="col">Cargo</th>
           <th scope="col">Area</th>
           <th scope="col">Data de Início</th>
-          <th scope="col">Ações</th>
+          <th scope="col">Dias Acumulados</th>
+          <th scope="col">Período</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Proximas Ferias</th>
         </tr>
       </thead>
       <tbody>
@@ -46,14 +50,14 @@
         {% for dbs in db %}
 
         <tr>
+          {{ event }}
           <th>{{dbs.id}}</th>
-
-          <td>{{dbs.nome}}</td>
+          <td><a href="/Cadastro_Ferias">{{dbs.nome}}</a></td>
 
           {% if dbs.cargo == NULL %}
           <td class="prevent-none">-</td>
           {% else %}
-          <td class="prevent-none"> {{dbs.cargo}}</td>
+          <td class="prevent-none">{{dbs.cargo}}</td>
           {%endif%}
 
           {% if dbs.area == NULL %}
@@ -68,7 +72,32 @@
           <td class="prevent-none">{{dbs.data_inicio | date:"d/m/yy"}}</td>
           {%endif%}
 
-          <td>
+          {% if dbs.Days_till == NULL %}
+          <td class="prevent-none">-</td>
+          {% else %}
+          <td class="prevent-none">{{dbs.Days_till}}</td>
+          {%endif%}
+
+          {% if dbs.periodo == NULL %}
+          <td class="prevent-none">-</td>
+          {% else %}
+          <td class="prevent-none">{{dbs.periodo}}</td>
+          {%endif%}
+
+          {% if dbs.tipo_ferias == NULL %}
+          <td class="prevent-none">-</td>
+          {% else %}
+          <td class="prevent-none">{{dbs.tipo_ferias}}</td>
+          {%endif%}
+
+          {% if dbs.proximas_ferias == NULL %}
+          <td class="prevent-none">-</td>
+          {% else %}
+          <td class="prevent-none">{{dbs.proximas_ferias}}</td>
+          {%endif%}
+
+
+          <!-- <td>
             <div class="btn-layouts">
               <a href="/editCandidate/{{dbs.id}}" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom"
                 title="Editar Candidato"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -85,7 +114,7 @@
                     d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                 </svg></a>
             </div>
-          </td>
+          </td> -->
         </tr>
 
         {% endfor %}

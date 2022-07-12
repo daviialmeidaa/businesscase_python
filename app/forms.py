@@ -5,6 +5,8 @@ from app.models import Areas
 from app.models import IndicacaoModel
 from app.models import Parceiros
 from app.models import Colaboradores
+from app.models import regras_ferias
+from app.models import DefinirFerias
 
 # Create the form class.
 class VagasForm(ModelForm):
@@ -35,4 +37,14 @@ class ParceiroForm(ModelForm):
 class ColaboradoresForm(ModelForm):
     class Meta:
         model = Colaboradores
-        fields = ['nome', 'cargo', 'area', 'data_inicio']
+        fields = ['nome', 'cargo', 'area', 'modalidade_contratacao', 'data_inicio']
+
+class RegrasFeriasForm(ModelForm):
+    class Meta:
+        model = regras_ferias      
+        fields = ['modalidade_contratacao', 'minimo_dias', 'tempo_max', 'periodo']
+
+class DefinirFeriasForm(ModelForm):
+    class Meta:
+        model = DefinirFerias
+        fields = ['tipo_ferias', 'data_saida', 'data_retorno']

@@ -1,8 +1,7 @@
 # from djmoney.models.fields import MoneyField
 from django.db import models
-from datetime import datetime,date
 from django.db.models import deletion
-
+from datetime import datetime, date
 # Create your models here.
 
 class Areas(models.Model):
@@ -48,19 +47,53 @@ class Candidatos(models.Model):
         return self.nome
         return self.vaga
 
+class Modalidades(models.Model):
+    modalidade_contratacao = models.CharField(max_length=150)        
+
+    def __str__(self):
+        return self.modalidade_contratacao
+
 
 class Colaboradores(models.Model):
     nome = models.CharField(max_length=150)
     cargo = models.CharField(max_length=150)
     area = models.ForeignKey(Areas, null=True, blank=True, related_name='indicacao', on_delete=deletion.DO_NOTHING)
-    modalidade_contratacao = models.CharField(max_length=150, null=True, blank=True)
-    data_inicio = models.DateField(null=False)
-
+    modalidade_contratacao = models.ForeignKey(Modalidades, null=True, blank=True, related_name='modalidade', on_delete=deletion.DO_NOTHING)
+    data_inicio = models.DateTimeField('Event Date', null=True)
+    periodo = models.IntegerField(null=True)
+    tipo_ferias = models.CharField(max_length=150, null=True)
+    proximas_ferias = models.CharField(max_length=150, null=True)
+    
     def __str__(self):
-        return self.area
+        return self.nome
+
+    @property
+    def Days_till(self):
+        today = date.today()
+        days_till = self.data_inicio.date() -today
+        days_till_stripped = str(days_till).split(",", 1)[0]
+        return days_till_stripped
+
 
 class regras_ferias(models.Model):
-    modalidade_contratacao = models.ForeignKey(Colaboradores, null=True, blank=True, related_name='indicacao', on_delete=deletion.CASCADE)
+    modalidade_contratacao = models.ForeignKey(Modalidades, null=True, blank=True, related_name='modalidade_colaborador', on_delete=deletion.CASCADE)
     minimo_dias = models.DurationField(null=True, blank=True)
     tempo_max = models.DurationField(null=True, blank=True)
     periodo = models.DurationField(null=True, blank=True)
+
+    def __str__(self):
+        return self.modalidade_contratacao
+
+class TiposFerias(models.Model):
+    tipo_ferias = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.tipo_ferias        
+
+class DefinirFerias(models.Model):
+    tipo_ferias = models.ForeignKey(TiposFerias, null=True, blank=True, related_name='tipos_ferias', on_delete=deletion.CASCADE)
+    data_saida = models.DateField("%d/%m/%Y", auto_now_add=False, auto_now=False, blank=True)
+    data_retorno = models.DateField("%d/%m/%Y", auto_now_add=False, auto_now=False, blank=True)
+    
+    def __str__(self):
+        return self.tipo_ferias
